@@ -12,6 +12,8 @@ namespace BE
         private string nombre;
         private string apellido;
         private int dni;
+        private string mail;
+        private string password;
 
         public int Id
         {
@@ -31,6 +33,15 @@ namespace BE
         {
             get { return dni; }
             set { dni = value; }
+        }
+        public string Mail
+        {
+            get { return mail; }
+            set { mail = value; }
+        }
+        public string Password
+        {
+            get { return password; }
         }
 
     }
