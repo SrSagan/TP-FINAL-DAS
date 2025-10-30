@@ -16,5 +16,15 @@ namespace SuperMercado
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string mail = mailInput1.Validar();
+                string password = passwordInput1.Validar();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
     }
 }

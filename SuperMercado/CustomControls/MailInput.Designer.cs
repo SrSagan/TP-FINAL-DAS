@@ -1,6 +1,6 @@
 ﻿namespace CustomControls
 {
-    partial class PasswordInput
+    partial class MailInput
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,16 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // PasswordInput
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "PasswordInput";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
         }
 
         #endregion

@@ -58,6 +58,7 @@
             this.Controls.Add(this.txtInput);
             this.Name = "TextInput";
             this.Size = new System.Drawing.Size(298, 30);
+            this.SizeChanged += new System.EventHandler(this.WidthChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

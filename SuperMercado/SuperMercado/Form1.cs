@@ -15,6 +15,7 @@ namespace SuperMercado
         public Form1()
         {
             InitializeComponent();
+            new Login().Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,7 +27,6 @@ namespace SuperMercado
         {
             try
             {
-                passwordInput1.Validar();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

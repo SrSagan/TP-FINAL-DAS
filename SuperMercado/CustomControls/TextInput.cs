@@ -7,11 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.CompilerServices;
 
 namespace CustomControls
 {
-    public abstract partial class TextInput: UserControl
+    public partial class TextInput: UserControl
     {
+        public TextInput()
+        {
+            InitializeComponent();
+            width = this.Width;
+        }
+        private int width;
         protected TextBox TxtInput
         {
             get { return txtInput; }
@@ -21,6 +28,7 @@ namespace CustomControls
         {
             get { return label1; }
         }
+
         public string LabelText
         {
             get { return label1.Text; }
@@ -29,9 +37,10 @@ namespace CustomControls
                 int oldSize = label1.Width;
                 label1.Text = value;
                 int offset = label1.Width - oldSize;
-                //acomodamos todo basado al tamaño del texto
-                this.Width = this.Width + offset; //expandimos el cuadro
+                //acomodamos todo basado al tamaño del label
+                Width = Width + offset; //expandimos el cuadro
                 txtInput.Location = new Point(txtInput.Location.X + offset, txtInput.Location.Y); //alejamos al textbox
+                txtInput.Width = txtInput.Width - offset;
             }
         }
 
@@ -43,7 +52,7 @@ namespace CustomControls
                 int oldSize = txtInput.Width;
                 txtInput.Width = value;
                 int offset = txtInput.Width - oldSize;
-                this.Width = this.Width + offset;
+                Width = Width + offset;
             }
         }
 
@@ -54,7 +63,10 @@ namespace CustomControls
             set { errorColor = value; }
         }
 
-        public abstract string Validar();
+        public string Validar()
+        {
+            return ValidarTexto();
+        }
 
         protected string ValidarTexto()
         {
@@ -80,9 +92,11 @@ namespace CustomControls
             label1.ForeColor = Color.Black;
         }
 
-        public TextInput()
+        private void WidthChanged(object sender, EventArgs e)
         {
-            InitializeComponent();
+            int offset = this.Width - width;
+            txtInput.Width = txtInput.Width + offset;
+            width = this.Width;
         }
 
     }

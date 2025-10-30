@@ -19,7 +19,13 @@ namespace CustomControls
             InitializeComponent();
         }
 
-        private int specialCharQ = 1; //cantidad de caracteres especiales
+        public char PasswordChar
+        {
+            get { return TxtInput.PasswordChar; }
+            set { TxtInput.PasswordChar = value;}
+        }
+
+        /*private int specialCharQ = 1; //cantidad de caracteres especiales
         public int SpecialCharQ
         {
             get { return specialCharQ; }
@@ -38,20 +44,19 @@ namespace CustomControls
         {
             get { return charQ; }
             set { charQ = value; }
-        }
+        }*/
 
-        public override string Validar()
+        public new string Validar()
         {
             string password = ValidarTexto();
-            checkLength(password);
+            /*checkLength(password);
             checkSpecial(password);
-            checkNumber(password);
-            setColorValido();
+            checkNumber(password);*/
 
             return password;
         }
 
-        private void checkLength(string pass)
+        /*private void checkLength(string pass)
         {
             if (pass.Length < charQ)
             {
@@ -87,6 +92,6 @@ namespace CustomControls
                 setColorError();
                 throw new Exception("La contaseña es invalida, se necesitan minimo: " + numberCharQ.ToString() + " numeros. (" + (numberCharQ - numberChar).ToString() + " mas)");
             }
-        }
+        }*/
     }
 }
