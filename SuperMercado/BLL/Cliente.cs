@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DAL;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
     public class Cliente
     {
+        public List<BE.Cliente> getClientes()
+        {
+            return new MapperCliente().getClientes();
+        }
     }
 }

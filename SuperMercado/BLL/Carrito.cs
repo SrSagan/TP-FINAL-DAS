@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DAL;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
     public class Carrito
     {
+        public List<BE.Carrito> getCarritos()
+        {
+            return new MapperCarrito().getCarritos();
+        }
     }
 }
