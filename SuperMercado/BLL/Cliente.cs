@@ -7,7 +7,7 @@ namespace BLL
     {
         public List<BE.Cliente> getClientes()
         {
-            return new MapperCliente().getClientes();
+            return new MapperCliente().GetAll();
         }
     }
 }
