@@ -7,7 +7,7 @@ namespace BLL
     {
         public List<BE.Carrito> getCarritos()
         {
-            return new MapperCarrito().getCarritos();
+            return new MapperCarrito().GetAll();
         }
     }
 }
