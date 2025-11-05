@@ -10,23 +10,19 @@ using System.Windows.Forms;
 
 namespace SuperMercado
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        public Login()
         {
             InitializeComponent();
-            new Login().Show();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
+                string mail = mailInput1.Validar();
+                string password = passwordInput1.Validar();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
