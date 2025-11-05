@@ -26,5 +26,12 @@ namespace BE
             get { return precio; }
             set { precio = value; }
         }
+
+        public Producto(int id, string nombre, float precio)
+        {
+            this.id = id;
+            this.nombre = nombre;
+            this.precio = precio;
+        }
     }
 }

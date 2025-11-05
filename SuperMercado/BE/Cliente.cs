@@ -6,42 +6,19 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Cliente
+    public class Cliente : Usuario
     {
-        private int id;
-        private string nombre;
-        private string apellido;
-        private int dni;
-        private string mail;
-        private string password;
+        private Carrito carrito;
 
-        public int Id
+        public Cliente(int id, string nombre, string apellido, int dni, string mail, string password, Carrito carrito) : base(id, nombre, apellido, dni, mail, password)
         {
-            get { return id; }
+            this.carrito = carrito;
         }
-        public string Nombre
+
+        public Carrito Carrito
         {
-            get { return nombre; }
-            set { nombre = value; }
-        }
-        public string Apellido
-        {
-            get { return apellido; }
-            set { apellido = value; }
-        }
-        public int Dni
-        {
-            get { return dni; }
-            set { dni = value; }
-        }
-        public string Mail
-        {
-            get { return mail; }
-            set { mail = value; }
-        }
-        public string Password
-        {
-            get { return password; }
+            get { return carrito; }
+            set { carrito = value; }
         }
 
     }
