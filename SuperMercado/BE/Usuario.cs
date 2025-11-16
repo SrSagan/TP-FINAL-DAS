@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public abstract class Usuario
+    public class Usuario
     {
         private readonly int id;
         private string nombre;
@@ -45,7 +45,7 @@ namespace BE
             get { return password; }
         }
 
-        private int Familia
+        public int Familia
         {
             set { familia = value; }
             get { return familia; }

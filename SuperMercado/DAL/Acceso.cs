@@ -10,7 +10,7 @@ namespace DAL
         SqlCommand cmd = new SqlCommand();
         private void Conectar()
         {
-            cn.ConnectionString = "Data Source=.;Initial Catalog=Supermercado;Integrated Security=True";
+            cn.ConnectionString = "Data Source=elcongresorol.duckdns.org,55879;Initial Catalog=Supermercado;Persist Security Info=True;User ID=Sa;Password=Kbo43462052!!;Encrypt=False";
             cn.Open();
         }
         private void Desconectar()

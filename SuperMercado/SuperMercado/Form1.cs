@@ -22,19 +22,23 @@ namespace SuperMercado
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
         private void ingresoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Login login = new Login();
             login.MdiParent = this;
             login.Show();
+        }
+
+        private void seleccionarProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IngresarProductos ingresar = new IngresarProductos();
+            ingresar.MdiParent = this;
+            ingresar.Show();
+        }
+
+        private void verFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

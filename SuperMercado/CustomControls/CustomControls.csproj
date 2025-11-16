@@ -48,6 +48,12 @@
     <Compile Include="MailInput.Designer.cs">
       <DependentUpon>MailInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="NumberInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NumberInput.Designer.cs">
+      <DependentUpon>NumberInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="NumberInput.resx">
+      <DependentUpon>NumberInput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PasswordInput.resx">
       <DependentUpon>PasswordInput.cs</DependentUpon>
     </EmbeddedResource>

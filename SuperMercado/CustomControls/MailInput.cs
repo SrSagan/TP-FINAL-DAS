@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,7 +21,7 @@ namespace CustomControls
         public new string Validar()
         {
             string email = ValidarTexto();
-            if (!email.Contains("@"))
+            if (!Regex.IsMatch(email, "[@]\\w+[\\.]"))
             {
                 setColorError();
                 throw new Exception("El email es invalido");

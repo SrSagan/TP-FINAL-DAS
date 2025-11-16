@@ -31,16 +31,20 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ingresoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comprarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seleccionarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loginToolStripMenuItem});
+            this.loginToolStripMenuItem,
+            this.comprarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1114, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -55,15 +59,38 @@
             // ingresoToolStripMenuItem
             // 
             this.ingresoToolStripMenuItem.Name = "ingresoToolStripMenuItem";
-            this.ingresoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ingresoToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.ingresoToolStripMenuItem.Text = "Ingreso";
             this.ingresoToolStripMenuItem.Click += new System.EventHandler(this.ingresoToolStripMenuItem_Click);
+            // 
+            // comprarToolStripMenuItem
+            // 
+            this.comprarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.seleccionarProductosToolStripMenuItem,
+            this.verFacturaToolStripMenuItem});
+            this.comprarToolStripMenuItem.Name = "comprarToolStripMenuItem";
+            this.comprarToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.comprarToolStripMenuItem.Text = "Comprar";
+            // 
+            // seleccionarProductosToolStripMenuItem
+            // 
+            this.seleccionarProductosToolStripMenuItem.Name = "seleccionarProductosToolStripMenuItem";
+            this.seleccionarProductosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.seleccionarProductosToolStripMenuItem.Text = "Seleccionar productos";
+            this.seleccionarProductosToolStripMenuItem.Click += new System.EventHandler(this.seleccionarProductosToolStripMenuItem_Click);
+            // 
+            // verFacturaToolStripMenuItem
+            // 
+            this.verFacturaToolStripMenuItem.Name = "verFacturaToolStripMenuItem";
+            this.verFacturaToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.verFacturaToolStripMenuItem.Text = "Ver Factura";
+            this.verFacturaToolStripMenuItem.Click += new System.EventHandler(this.verFacturaToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1114, 549);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -83,6 +110,9 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ingresoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comprarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seleccionarProductosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verFacturaToolStripMenuItem;
     }
 }
 
