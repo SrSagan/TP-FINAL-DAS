@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 
-namespace DAL
+namespace DAL.Mappers
 {
-    internal class MapperUsuario : ICRUD<Usuario>
+    public class MapperPedido : ICRUD<BE.Pedido>
     {
-        public int Create(Usuario entity)
+        public int Create(Pedido entity)
         {
             throw new NotImplementedException();
         }
@@ -19,17 +19,17 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public List<Usuario> GetAll()
+        public List<Pedido> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Usuario GetById(int id)
+        public Pedido GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(Usuario entity)
+        public int Update(Pedido entity)
         {
             throw new NotImplementedException();
         }

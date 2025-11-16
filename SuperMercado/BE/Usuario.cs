@@ -14,6 +14,7 @@ namespace BE
         private int dni;
         private string mail;
         private readonly string password; //hash
+        private int familia;
 
         public int Id
         {
@@ -44,7 +45,13 @@ namespace BE
             get { return password; }
         }
 
-        public Usuario(int id, string nombre, string apellido, int dni, string mail, string password)
+        private int Familia
+        {
+            set { familia = value; }
+            get { return familia; }
+        }
+
+        public Usuario(int id, string nombre, string apellido, int dni, string mail, string password, int familia)
         {
             this.id = id;
             this.nombre = nombre;
@@ -52,6 +59,7 @@ namespace BE
             this.dni = dni;
             this.mail = mail;
             this.password = password;
+            this.familia = familia;
         }
     }
 }

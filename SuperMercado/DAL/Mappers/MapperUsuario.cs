@@ -7,9 +7,9 @@ using BE;
 
 namespace DAL
 {
-    internal class MapperAdministrador : ICRUD<Administrador>
+    public class MapperUsuario : ICRUD<Usuario>
     {
-        public int Create(Administrador entity)
+        public int Create(Usuario entity)
         {
             throw new NotImplementedException();
         }
@@ -19,17 +19,17 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public List<Administrador> GetAll()
+        public List<Usuario> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Administrador GetById(int id)
+        public Usuario GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public int Update(Administrador entity)
+        public int Update(Usuario entity)
         {
             throw new NotImplementedException();
         }

@@ -42,12 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acceso.cs" />
-    <Compile Include="MapperAdministrador.cs" />
-    <Compile Include="MapperCarrito.cs" />
-    <Compile Include="MapperCliente.cs" />
+    <Compile Include="Mappers\MapperFactura.cs" />
     <Compile Include="ICRUD.cs" />
-    <Compile Include="MapperProducto.cs" />
-    <Compile Include="MapperUsuario.cs" />
+    <Compile Include="Mappers\MapperOrdenDeCompra.cs" />
+    <Compile Include="Mappers\MapperPedido.cs" />
+    <Compile Include="Mappers\MapperProducto.cs" />
+    <Compile Include="Mappers\MapperUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
