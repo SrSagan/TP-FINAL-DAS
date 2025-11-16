@@ -18,7 +18,7 @@ namespace DAL
             throw new System.NotImplementedException();
         }
 
-        public List<Producto> getAll()
+        public List<Producto> GetAll()
         {
             DataTable dt = acceso.Leer("sp_getProductos", null);
             List<Producto> productos = new List<Producto>();
@@ -32,11 +32,6 @@ namespace DAL
                 productos.Add(producto);
             }
             return productos;
-        }
-
-        public List<Producto> GetAll()
-        {
-            throw new System.NotImplementedException();
         }
 
         public Producto GetById(int id)

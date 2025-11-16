@@ -15,7 +15,6 @@ namespace SuperMercado
         public Form1()
         {
             InitializeComponent();
-            new Login().Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,6 +28,13 @@ namespace SuperMercado
             {
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void ingresoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.MdiParent = this;
+            login.Show();
         }
     }
 }

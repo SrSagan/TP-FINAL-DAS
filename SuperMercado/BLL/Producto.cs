@@ -7,7 +7,7 @@ namespace BLL
     {
         public List<BE.Producto> getProductos()
         {
-            return new MapperProducto().getProductos();
+            return new MapperProducto().GetAll();
         }
     }
 }
