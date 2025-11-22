@@ -14,14 +14,13 @@ namespace DAL
         private readonly Acceso acceso = new Acceso();
         public int Create(Usuario entity)
         {
-            SqlParameter[] parameters = new SqlParameter[7];
-            parameters[0] = new SqlParameter("@Id", entity.Id);
-            parameters[1] = new SqlParameter("@Nombre", entity.Nombre);
-            parameters[2] = new SqlParameter("@Apellido", entity.Apellido);
-            parameters[3] = new SqlParameter("@Dni", entity.Dni);
-            parameters[4] = new SqlParameter("@Mail", entity.Mail);
-            parameters[5] = new SqlParameter("@Password", entity.Password);
-            parameters[6] = new SqlParameter("@Familia", entity.Familia);
+            SqlParameter[] parameters = new SqlParameter[6];
+            parameters[0] = new SqlParameter("@Nombre", entity.Nombre);
+            parameters[1] = new SqlParameter("@Apellido", entity.Apellido);
+            parameters[2] = new SqlParameter("@Dni", entity.Dni);
+            parameters[3] = new SqlParameter("@Mail", entity.Mail);
+            parameters[4] = new SqlParameter("@Password", entity.Password);
+            parameters[5] = new SqlParameter("@Familia", entity.Familia);
 
             return acceso.Escribir("sp_Usuario_Create", parameters);
         }

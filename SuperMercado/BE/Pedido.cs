@@ -8,10 +8,16 @@ namespace BE
 {
     public class Pedido
     {
+        private int id;
         private Producto producto;
         private int cantidad;
         private float precio;
 
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public Producto Producto
         {
             get { return producto; }
@@ -31,8 +37,9 @@ namespace BE
             }
         }
 
-        public Pedido(Producto producto, int cantidad)
+        public Pedido(int id, Producto producto, int cantidad)
         {
+            this.id = id;
             this.producto = producto;
             this.cantidad = cantidad;
         }

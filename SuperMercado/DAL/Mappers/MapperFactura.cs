@@ -1,6 +1,7 @@
 ﻿using BE;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace DAL
 {
@@ -10,27 +11,62 @@ namespace DAL
 
         public int Create(Factura entity)
         {
-            throw new System.NotImplementedException();
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@UsuarioId", entity.Cliente.Id);
+            parameters[1] = new SqlParameter("@PrecioTotal", entity.PrecioTotal);
+
+            return acceso.Escribir("sp_Factura_Create", parameters);
         }
 
         public int Delete(int id)
         {
-            throw new System.NotImplementedException();
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@Id", id);
+
+            return acceso.Escribir("sp_Factura_Delete", parameters);
         }
 
         public List<Factura> GetAll()
         {
-            throw new System.NotImplementedException();
+            DataTable dt = acceso.Leer("sp_Factura_GetAll", null);
+            List<Factura> facturas = new List<Factura>();
+            foreach (DataRow row in dt.Rows)
+            {
+                Factura factura = new Factura(
+                    (int)row["Id"],
+                    new MapperUsuario().GetById((int)row["UsuarioId"]),
+                    (int)row["PrecioTotal"]
+                    );
+                facturas.Add(factura);
+            }
+            return facturas;
         }
 
         public Factura GetById(int id)
         {
-            throw new System.NotImplementedException();
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@Id", id);
+
+            DataTable dt = acceso.Leer("sp_Producto_GetById", parameters);
+
+            DataRow row = dt.Rows[0];
+            Factura factura = new Factura(
+                    (int)row["Id"],
+                    new MapperUsuario().GetById((int)row["UsuarioId"]),
+                    (int)row["PrecioTotal"]
+                    );
+
+            return factura;
         }
 
         public int Update(Factura entity)
         {
-            throw new System.NotImplementedException();
+            SqlParameter[] parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@Id", entity.Id);
+            parameters[1] = new SqlParameter("@UsuarioId", entity.Cliente.Id);
+            parameters[2] = new SqlParameter("@PrecioTotal", entity.PrecioTotal);
+
+            return acceso.Escribir("sp_Factura_Update", parameters);
         }
     }
 }

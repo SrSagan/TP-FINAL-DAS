@@ -11,11 +11,10 @@ namespace DAL
 
         public int Create(Producto entity)
         {
-            SqlParameter[] parameters = new SqlParameter[7];
-            parameters[0] = new SqlParameter("@Id", entity.Id);
-            parameters[1] = new SqlParameter("@Nombre", entity.Nombre);
-            parameters[2] = new SqlParameter("@Precio", entity.Precio);
-            parameters[3] = new SqlParameter("@Stock", entity.Stock);
+            SqlParameter[] parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@Nombre", entity.Nombre);
+            parameters[1] = new SqlParameter("@Precio", entity.Precio);
+            parameters[2] = new SqlParameter("@Stock", entity.Stock);
 
             return acceso.Escribir("sp_Producto_Create", parameters);
         }
@@ -65,7 +64,7 @@ namespace DAL
 
         public int Update(Producto entity)
         {
-            SqlParameter[] parameters = new SqlParameter[7];
+            SqlParameter[] parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@Id", entity.Id);
             parameters[1] = new SqlParameter("@Nombre", entity.Nombre);
             parameters[2] = new SqlParameter("@Precio", entity.Precio);
