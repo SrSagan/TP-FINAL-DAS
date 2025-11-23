@@ -23,6 +23,12 @@ namespace SuperMercado
             {
                 string mail = mailInput1.Validar();
                 string password = passwordInput1.Validar();
+                if(new BLL.Usuario().Validar(mail,password))
+                {
+                    IngresarProductos ingresar = new IngresarProductos();
+                    ingresar.MdiParent = this;
+                    ingresar.Show();
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

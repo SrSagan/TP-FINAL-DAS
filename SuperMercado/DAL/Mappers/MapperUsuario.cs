@@ -73,7 +73,26 @@ namespace DAL
                
             return usr;
         }
+        public Usuario GetByMail(string mail)
+        {
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@Mail", mail);
 
+            DataTable dt = acceso.Leer("sp_Usuario_GetByMail", parameters);
+
+            DataRow row = dt.Rows[0];
+            Usuario usr = new Usuario(
+            (int)row["Id"],
+            row["Nombre"].ToString(),
+            row["Apellido"].ToString(),
+            (int)row["Dni"],
+            row["Mail"].ToString(),
+            row["Password"].ToString(),
+            (int)row["Familia"]
+            );
+
+            return usr;
+        }
         public int Update(Usuario entity)
         {
             SqlParameter[] parameters = new SqlParameter[7];

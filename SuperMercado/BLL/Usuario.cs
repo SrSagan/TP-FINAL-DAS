@@ -12,5 +12,19 @@ namespace BLL
         {
             return new DAL.MapperUsuario().Create(usr);
         }
+        public BE.Usuario Get(String mail)
+        {
+            return new DAL.MapperUsuario().GetByMail(mail);
+        }
+
+        public bool Validar(string username, string password)
+        {
+            if (username != null && password != null)
+            {
+                BE.Usuario user = Get(username);
+                return user.Password == password;
+            }
+            return false;
+        }
     }
 }
