@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cripto.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="OrdenDeCompra.cs" />
     <Compile Include="Pedido.cs" />
