@@ -9,15 +9,16 @@ using BE;
 
 namespace DAL.Mappers
 {
-    public class MapperPedido : ICRUD<BE.Pedido>
+    public class MapperPedido
     {
         private readonly Acceso acceso = new Acceso();
-        public int Create(Pedido entity)
+        public int Create(Pedido entity, int OrdenDeCompra)
         {
-            SqlParameter[] parameters = new SqlParameter[2];
+            SqlParameter[] parameters = new SqlParameter[3];
 
             parameters[0] = new SqlParameter("@Producto", entity.Producto.Id);
             parameters[1] = new SqlParameter("@Cantidad", entity.Cantidad);
+            parameters[2] = new SqlParameter("@OrdenDeCompra", OrdenDeCompra);
 
             return acceso.Escribir("sp_Pedido_Create", parameters);
         }
@@ -63,12 +64,13 @@ namespace DAL.Mappers
             return pedido;
         }
 
-        public int Update(Pedido entity)
+        public int Update(Pedido entity, int OrdenDeCompra)
         {
-            SqlParameter[] parameters = new SqlParameter[7];
+            SqlParameter[] parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@Id", entity.Id);
             parameters[1] = new SqlParameter("@Producto", entity.Producto.Id);
             parameters[2] = new SqlParameter("@Cantidad", entity.Cantidad);
+            parameters[3] = new SqlParameter("@OrdenDeCompra", OrdenDeCompra);
 
             return acceso.Escribir("sp_Pedido_Update", parameters);
         }

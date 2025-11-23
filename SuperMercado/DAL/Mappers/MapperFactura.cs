@@ -11,9 +11,10 @@ namespace DAL
 
         public int Create(Factura entity)
         {
-            SqlParameter[] parameters = new SqlParameter[2];
+            SqlParameter[] parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@UsuarioId", entity.Cliente.Id);
             parameters[1] = new SqlParameter("@PrecioTotal", entity.PrecioTotal);
+            parameters[2] = new SqlParameter("@OrdenDeCompra", entity.Compra.Id);
 
             return acceso.Escribir("sp_Factura_Create", parameters);
         }
@@ -35,6 +36,7 @@ namespace DAL
                 Factura factura = new Factura(
                     (int)row["Id"],
                     new MapperUsuario().GetById((int)row["UsuarioId"]),
+                    new BE.OrdenDeCompra(0, new List<Pedido> { }),
                     (int)row["PrecioTotal"]
                     );
                 facturas.Add(factura);
@@ -53,6 +55,7 @@ namespace DAL
             Factura factura = new Factura(
                     (int)row["Id"],
                     new MapperUsuario().GetById((int)row["UsuarioId"]),
+                    new BE.OrdenDeCompra(0 ,new List<Pedido> { }),
                     (int)row["PrecioTotal"]
                     );
 
@@ -61,10 +64,11 @@ namespace DAL
 
         public int Update(Factura entity)
         {
-            SqlParameter[] parameters = new SqlParameter[3];
+            SqlParameter[] parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@Id", entity.Id);
             parameters[1] = new SqlParameter("@UsuarioId", entity.Cliente.Id);
             parameters[2] = new SqlParameter("@PrecioTotal", entity.PrecioTotal);
+            parameters[3] = new SqlParameter("@OrdenDeCompra", entity.Compra.Id);
 
             return acceso.Escribir("sp_Factura_Update", parameters);
         }

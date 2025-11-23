@@ -8,5 +8,9 @@ namespace BLL
 {
     public class Usuario
     {
+        public int Create(BE.Usuario usr)
+        {
+            return new DAL.MapperUsuario().Create(usr);
+        }
     }
 }

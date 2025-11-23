@@ -8,9 +8,15 @@ namespace BE
 {
     public class OrdenDeCompra
     {
+        private int id;
         private List<Pedido> pedidos;
         private float precioTotal;
 
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public List<Pedido> Pedidos
         {
             set { pedidos = value; }
@@ -30,8 +36,9 @@ namespace BE
             }
         }
 
-        public OrdenDeCompra(List<Pedido> pedidos)
+        public OrdenDeCompra(int id, List<Pedido> pedidos)
         {
+            this.id = id;
             this.pedidos = pedidos;
         }
     }
