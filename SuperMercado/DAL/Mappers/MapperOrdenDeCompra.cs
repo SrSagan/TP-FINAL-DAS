@@ -11,7 +11,7 @@ namespace DAL.Mappers
 {
     public class MapperOrdenDeCompra
     {
-        private readonly Acceso acceso = new Acceso();
+        /*private readonly Acceso acceso = new Acceso();
 
         public int Create(OrdenDeCompra entity, int Factura)
         {
@@ -67,6 +67,6 @@ namespace DAL.Mappers
             parameters[1] = new SqlParameter("@FacturaId", FacturaId);
 
             return acceso.Escribir("sp_OrdenDeCompra_Update", parameters);
-        }
+        }*/
     }
 }

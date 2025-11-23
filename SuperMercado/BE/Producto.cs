@@ -10,6 +10,7 @@
         public int Id
         {
             get { return id; }
+            set { id = value; }
         }
         public string Nombre
         {
@@ -27,12 +28,16 @@
             set { stock = value; }
         }
 
-        public Producto(int id, string nombre, float precio, int stock)
+        public Producto(string nombre, float precio, int stock)
         {
-            this.id = id;
             this.nombre = nombre;
             this.precio = precio;
             this.stock = stock;
         }
+        public Producto()
+        {
+
+        }
+
     }
 }

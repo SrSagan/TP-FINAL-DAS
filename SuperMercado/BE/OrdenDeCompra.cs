@@ -36,10 +36,13 @@ namespace BE
             }
         }
 
-        public OrdenDeCompra(int id, List<Pedido> pedidos)
+        public OrdenDeCompra(List<Pedido> pedidos)
         {
-            this.id = id;
             this.pedidos = pedidos;
+        }
+        public OrdenDeCompra()
+        {
+            this.pedidos = new List<BE.Pedido>() { };
         }
     }
 }

@@ -12,6 +12,7 @@ namespace BE
         public int Id
         {
             get { return id; }
+            set { id = value; }
         }
         public Usuario Cliente
         { 
@@ -33,12 +34,14 @@ namespace BE
             }
         }
 
-        public Factura(int id, Usuario cliente, OrdenDeCompra compra, float precioTotal)
+        public Factura(Usuario cliente, OrdenDeCompra compra)
         {
-            this.id = id;
             this.cliente = cliente;
             this.compra = compra;
-            this.precioTotal = precioTotal;
+        }
+        public Factura()
+        {
+
         }
     }
 }

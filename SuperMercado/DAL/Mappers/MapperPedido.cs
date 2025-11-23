@@ -12,13 +12,13 @@ namespace DAL.Mappers
     public class MapperPedido
     {
         private readonly Acceso acceso = new Acceso();
-        public int Create(Pedido entity, int OrdenDeCompra)
+        public int Create(Pedido entity, int FacturaId)
         {
             SqlParameter[] parameters = new SqlParameter[3];
 
             parameters[0] = new SqlParameter("@Producto", entity.Producto.Id);
             parameters[1] = new SqlParameter("@Cantidad", entity.Cantidad);
-            parameters[2] = new SqlParameter("@OrdenDeCompra", OrdenDeCompra);
+            parameters[2] = new SqlParameter("@FacturaId", FacturaId);
 
             return acceso.Escribir("sp_Pedido_Create", parameters);
         }
@@ -38,10 +38,10 @@ namespace DAL.Mappers
             foreach (DataRow row in dt.Rows)
             {
                 Pedido pedido = new Pedido(
-                    (int)row["Id"],
                     new MapperProducto().GetById((int)row["Producto"]),
                     (int)row["Cantidad"]
                     );
+                pedido.Id = (int)row["Id"];
                 pedidos.Add(pedido);
             }
             return pedidos;
@@ -56,21 +56,20 @@ namespace DAL.Mappers
 
             DataRow row = dt.Rows[0];
             Pedido pedido = new Pedido(
-                    (int)row["Id"],
                     new MapperProducto().GetById((int)row["Producto"]),
                     (int)row["Cantidad"]
                     );
-
+            pedido.Id = id;
             return pedido;
         }
 
-        public int Update(Pedido entity, int OrdenDeCompra)
+        public int Update(Pedido entity, int FacturaId)
         {
             SqlParameter[] parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@Id", entity.Id);
             parameters[1] = new SqlParameter("@Producto", entity.Producto.Id);
             parameters[2] = new SqlParameter("@Cantidad", entity.Cantidad);
-            parameters[3] = new SqlParameter("@OrdenDeCompra", OrdenDeCompra);
+            parameters[3] = new SqlParameter("@FacturaId", FacturaId);
 
             return acceso.Escribir("sp_Pedido_Update", parameters);
         }

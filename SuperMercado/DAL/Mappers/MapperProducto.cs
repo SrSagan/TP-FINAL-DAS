@@ -34,11 +34,11 @@ namespace DAL
             foreach (DataRow row in dt.Rows)
             {
                 Producto producto = new Producto(
-                    (int)row["Id"],
                     row["Nombre"].ToString(),
-                    (float)row["Precio"],
+                    float.Parse(row["Precio"].ToString()),
                     (int)row["Stock"]
                     );
+                producto.Id = (int)row["Id"];
                 productos.Add(producto);
             }
             return productos;
@@ -53,12 +53,11 @@ namespace DAL
 
             DataRow row = dt.Rows[0];
             Producto producto = new Producto(
-                    (int)row["Id"],
                     row["Nombre"].ToString(),
-                    (float)row["Precio"],
+                    float.Parse(row["Precio"].ToString()),
                     (int)row["Stock"]
                     );
-
+            producto.Id = id;
             return producto;
         }
 

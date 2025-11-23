@@ -34,11 +34,10 @@ namespace DAL
             foreach (DataRow row in dt.Rows)
             {
                 Factura factura = new Factura(
-                    (int)row["Id"],
                     new MapperUsuario().GetById((int)row["UsuarioId"]),
-                    new BE.OrdenDeCompra(0, new List<Pedido> { }),
-                    (int)row["PrecioTotal"]
+                    new BE.OrdenDeCompra(new List<Pedido> { })
                     );
+                factura.Id = (int)row["Id"];
                 facturas.Add(factura);
             }
             return facturas;
@@ -53,11 +52,10 @@ namespace DAL
 
             DataRow row = dt.Rows[0];
             Factura factura = new Factura(
-                    (int)row["Id"],
                     new MapperUsuario().GetById((int)row["UsuarioId"]),
-                    new BE.OrdenDeCompra(0 ,new List<Pedido> { }),
-                    (int)row["PrecioTotal"]
+                    new BE.OrdenDeCompra(new List<Pedido> { })
                     );
+            factura.Id = id;
 
             return factura;
         }

@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.mercadoGrid = new System.Windows.Forms.DataGridView();
-            this.carritoGrid = new System.Windows.Forms.DataGridView();
-            this.buyButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.carritoGrid = new System.Windows.Forms.DataGridView();
             this.idCarrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductoCarrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StockCarrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioCarrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buyButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.numberInput1 = new CustomControls.NumberInput();
             ((System.ComponentModel.ISupportInitialize)(this.mercadoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carritoGrid)).BeginInit();
@@ -57,45 +57,11 @@
             this.Stock,
             this.Precio});
             this.mercadoGrid.Location = new System.Drawing.Point(12, 12);
+            this.mercadoGrid.MultiSelect = false;
             this.mercadoGrid.Name = "mercadoGrid";
             this.mercadoGrid.Size = new System.Drawing.Size(355, 426);
             this.mercadoGrid.TabIndex = 0;
-            // 
-            // carritoGrid
-            // 
-            this.carritoGrid.AllowUserToAddRows = false;
-            this.carritoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.carritoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idCarrito,
-            this.ProductoCarrito,
-            this.StockCarrito,
-            this.PrecioCarrito,
-            this.Total});
-            this.carritoGrid.Location = new System.Drawing.Point(484, 12);
-            this.carritoGrid.Name = "carritoGrid";
-            this.carritoGrid.Size = new System.Drawing.Size(457, 426);
-            this.carritoGrid.TabIndex = 1;
-            // 
-            // buyButton
-            // 
-            this.buyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buyButton.Location = new System.Drawing.Point(374, 333);
-            this.buyButton.Name = "buyButton";
-            this.buyButton.Size = new System.Drawing.Size(102, 35);
-            this.buyButton.TabIndex = 2;
-            this.buyButton.Text = "Comprar";
-            this.buyButton.UseVisualStyleBackColor = true;
-            this.buyButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(393, 184);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Cantidad";
+            this.mercadoGrid.SelectionChanged += new System.EventHandler(this.mercadoGrid_SelectionChanged);
             // 
             // id
             // 
@@ -121,6 +87,21 @@
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
+            // 
+            // carritoGrid
+            // 
+            this.carritoGrid.AllowUserToAddRows = false;
+            this.carritoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.carritoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idCarrito,
+            this.ProductoCarrito,
+            this.StockCarrito,
+            this.PrecioCarrito,
+            this.Total});
+            this.carritoGrid.Location = new System.Drawing.Point(484, 12);
+            this.carritoGrid.Name = "carritoGrid";
+            this.carritoGrid.Size = new System.Drawing.Size(457, 426);
+            this.carritoGrid.TabIndex = 1;
             // 
             // idCarrito
             // 
@@ -149,6 +130,27 @@
             // 
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
+            // 
+            // buyButton
+            // 
+            this.buyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buyButton.Location = new System.Drawing.Point(374, 333);
+            this.buyButton.Name = "buyButton";
+            this.buyButton.Size = new System.Drawing.Size(102, 35);
+            this.buyButton.TabIndex = 2;
+            this.buyButton.Text = "Comprar";
+            this.buyButton.UseVisualStyleBackColor = true;
+            this.buyButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(393, 184);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 17);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Cantidad";
             // 
             // numberInput1
             // 

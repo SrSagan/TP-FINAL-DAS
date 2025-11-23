@@ -38,7 +38,14 @@ namespace SuperMercado
 
         private void verFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministrarProductos administrar = new AdministrarProductos();
+            administrar.MdiParent = this;
+            administrar.Show();
         }
     }
 }

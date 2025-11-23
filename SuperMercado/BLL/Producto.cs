@@ -9,5 +9,14 @@ namespace BLL
         {
             return new MapperProducto().GetAll();
         }
+        public int Create(BE.Producto pr)
+        {
+            return new MapperProducto().Create(pr);
+        }
+
+        public BE.Producto GetById(int id)
+        {
+            return new MapperProducto().GetById(id);
+        }
     }
 }

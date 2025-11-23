@@ -8,7 +8,7 @@ namespace BE
 {
     public class Usuario
     {
-        private readonly int id;
+        private int id;
         private string nombre;
         private string apellido;
         private int dni;
@@ -19,6 +19,7 @@ namespace BE
         public int Id
         {
             get { return id; }
+            set { id = value; }
         }
         public string Nombre
         {
@@ -51,15 +52,18 @@ namespace BE
             get { return familia; }
         }
 
-        public Usuario(int id, string nombre, string apellido, int dni, string mail, string password, int familia)
+        public Usuario(string nombre, string apellido, int dni, string mail, string password, int familia)
         {
-            this.id = id;
             this.nombre = nombre;
             this.apellido = apellido;
             this.dni = dni;
             this.mail = mail;
             this.password = password;
             this.familia = familia;
+        }
+        public Usuario()
+        {
+
         }
     }
 }

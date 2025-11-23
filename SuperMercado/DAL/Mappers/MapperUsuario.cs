@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
@@ -39,8 +40,7 @@ namespace DAL
             List<Usuario> usuarios = new List<Usuario>();
             foreach (DataRow row in dt.Rows)
             {
-                Usuario usr = new Usuario(
-                    (int)row["Id"], 
+                Usuario usr = new Usuario( 
                     row["Nombre"].ToString(), 
                     row["Apellido"].ToString(), 
                     (int)row["Dni"], 
@@ -48,6 +48,7 @@ namespace DAL
                     row["Password"].ToString(), 
                     (int)row["Familia"]
                     );
+                usr.Id = (int)row["Id"];
                 usuarios.Add(usr);
             }
             return usuarios;
@@ -62,7 +63,6 @@ namespace DAL
 
             DataRow row = dt.Rows[0];
             Usuario usr = new Usuario(
-            (int)row["Id"],
             row["Nombre"].ToString(),
             row["Apellido"].ToString(),
             (int)row["Dni"],
@@ -70,6 +70,7 @@ namespace DAL
             row["Password"].ToString(),
             (int)row["Familia"]
             );
+            usr.Id = id;
                
             return usr;
         }

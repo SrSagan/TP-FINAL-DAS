@@ -37,11 +37,14 @@ namespace BE
             }
         }
 
-        public Pedido(int id, Producto producto, int cantidad)
+        public Pedido(Producto producto, int cantidad)
         {
-            this.id = id;
             this.producto = producto;
             this.cantidad = cantidad;
+        }
+        public Pedido()
+        {
+
         }
     }
 }
