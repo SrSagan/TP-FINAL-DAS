@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,11 +27,31 @@ namespace SuperMercado
                 if(new BLL.Usuario().Validar(mail,password))
                 {
                     IngresarProductos ingresar = new IngresarProductos();
-                    ingresar.MdiParent = this;
                     ingresar.Show();
+                    this.Hide();
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string mail = mailInput1.Validar();
+                string password = passwordInput1.Validar();
+                if (new BLL.Usuario().Validar(mail, password))
+                {
+                    IngresarProductos ingresar = new IngresarProductos();
+                    ingresar.Show();
+                    this.Hide();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
         }
     }
 }
