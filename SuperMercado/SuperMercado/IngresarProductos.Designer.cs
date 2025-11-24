@@ -42,6 +42,10 @@
             this.buyButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.numberInput1 = new CustomControls.NumberInput();
+            this.comprarButton = new System.Windows.Forms.Button();
+            this.delbutton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mercadoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carritoGrid)).BeginInit();
             this.SuspendLayout();
@@ -56,12 +60,12 @@
             this.Producto,
             this.Stock,
             this.Precio});
-            this.mercadoGrid.Location = new System.Drawing.Point(12, 12);
+            this.mercadoGrid.Location = new System.Drawing.Point(12, 26);
             this.mercadoGrid.MultiSelect = false;
             this.mercadoGrid.Name = "mercadoGrid";
-            this.mercadoGrid.Size = new System.Drawing.Size(355, 426);
+            this.mercadoGrid.Size = new System.Drawing.Size(355, 412);
             this.mercadoGrid.TabIndex = 0;
-            this.mercadoGrid.SelectionChanged += new System.EventHandler(this.mercadoGrid_SelectionChanged);
+            this.mercadoGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mercadoGrid_CellClick);
             // 
             // id
             // 
@@ -91,6 +95,7 @@
             // carritoGrid
             // 
             this.carritoGrid.AllowUserToAddRows = false;
+            this.carritoGrid.AllowUserToDeleteRows = false;
             this.carritoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.carritoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idCarrito,
@@ -98,10 +103,12 @@
             this.StockCarrito,
             this.PrecioCarrito,
             this.Total});
-            this.carritoGrid.Location = new System.Drawing.Point(484, 12);
+            this.carritoGrid.Location = new System.Drawing.Point(484, 26);
             this.carritoGrid.Name = "carritoGrid";
-            this.carritoGrid.Size = new System.Drawing.Size(457, 426);
+            this.carritoGrid.Size = new System.Drawing.Size(457, 412);
             this.carritoGrid.TabIndex = 1;
+            this.carritoGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.carritoGrid_CellClick);
+            this.carritoGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.carritoGrid_CellEndEdit);
             // 
             // idCarrito
             // 
@@ -125,6 +132,7 @@
             // 
             this.PrecioCarrito.HeaderText = "Precio";
             this.PrecioCarrito.Name = "PrecioCarrito";
+            this.PrecioCarrito.ReadOnly = true;
             // 
             // Total
             // 
@@ -134,11 +142,11 @@
             // buyButton
             // 
             this.buyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buyButton.Location = new System.Drawing.Point(374, 333);
+            this.buyButton.Location = new System.Drawing.Point(376, 236);
             this.buyButton.Name = "buyButton";
             this.buyButton.Size = new System.Drawing.Size(102, 35);
             this.buyButton.TabIndex = 2;
-            this.buyButton.Text = "Comprar";
+            this.buyButton.Text = "Sumar";
             this.buyButton.UseVisualStyleBackColor = true;
             this.buyButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -155,18 +163,64 @@
             // numberInput1
             // 
             this.numberInput1.ErrorColor = System.Drawing.Color.Red;
-            this.numberInput1.Label1 = null;
+            this.numberInput1.Label1 = this.label1;
             this.numberInput1.Location = new System.Drawing.Point(373, 204);
             this.numberInput1.Name = "numberInput1";
             this.numberInput1.Size = new System.Drawing.Size(105, 26);
             this.numberInput1.TabIndex = 3;
             this.numberInput1.TextBoxWidth = 100;
             // 
+            // comprarButton
+            // 
+            this.comprarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comprarButton.Location = new System.Drawing.Point(376, 12);
+            this.comprarButton.Name = "comprarButton";
+            this.comprarButton.Size = new System.Drawing.Size(102, 35);
+            this.comprarButton.TabIndex = 5;
+            this.comprarButton.Text = "Comprar";
+            this.comprarButton.UseVisualStyleBackColor = true;
+            this.comprarButton.Click += new System.EventHandler(this.comprarButton_Click);
+            // 
+            // delbutton
+            // 
+            this.delbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delbutton.Location = new System.Drawing.Point(376, 403);
+            this.delbutton.Name = "delbutton";
+            this.delbutton.Size = new System.Drawing.Size(102, 35);
+            this.delbutton.TabIndex = 6;
+            this.delbutton.Text = "Eliminar";
+            this.delbutton.UseVisualStyleBackColor = true;
+            this.delbutton.Click += new System.EventHandler(this.delbutton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(158, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Mercado";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(687, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Carrito";
+            // 
             // IngresarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 449);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.delbutton);
+            this.Controls.Add(this.comprarButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numberInput1);
             this.Controls.Add(this.buyButton);
@@ -197,5 +251,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StockCarrito;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioCarrito;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.Button comprarButton;
+        private System.Windows.Forms.Button delbutton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

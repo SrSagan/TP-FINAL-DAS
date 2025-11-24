@@ -8,5 +8,14 @@ namespace BLL
 {
     public class Factura
     {
+        public int Create(BE.Factura fac)
+        {
+            return new DAL.MapperFactura().Create(fac);
+        }
+
+        public BE.Factura GetLast()
+        {
+            return new DAL.MapperFactura().GetLast();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace DAL
 {
@@ -11,10 +12,9 @@ namespace DAL
 
         public int Create(Factura entity)
         {
-            SqlParameter[] parameters = new SqlParameter[3];
+            SqlParameter[] parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@UsuarioId", entity.Cliente.Id);
             parameters[1] = new SqlParameter("@PrecioTotal", entity.PrecioTotal);
-            parameters[2] = new SqlParameter("@OrdenDeCompra", entity.Compra.Id);
 
             return acceso.Escribir("sp_Factura_Create", parameters);
         }
@@ -62,13 +62,26 @@ namespace DAL
 
         public int Update(Factura entity)
         {
-            SqlParameter[] parameters = new SqlParameter[4];
+            SqlParameter[] parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@Id", entity.Id);
             parameters[1] = new SqlParameter("@UsuarioId", entity.Cliente.Id);
             parameters[2] = new SqlParameter("@PrecioTotal", entity.PrecioTotal);
-            parameters[3] = new SqlParameter("@OrdenDeCompra", entity.Compra.Id);
 
             return acceso.Escribir("sp_Factura_Update", parameters);
+        }
+
+        public Factura GetLast()
+        {
+            DataTable dt = acceso.Leer("sp_Factura_GetLast", null);
+
+            DataRow row = dt.Rows[0];
+            Factura factura = new Factura(
+                    new MapperUsuario().GetById((int)row["UsuarioId"]),
+                    new BE.OrdenDeCompra(new List<Pedido> { })
+                    );
+            factura.Id = (int)row["Id"];
+
+            return factura;
         }
     }
 }

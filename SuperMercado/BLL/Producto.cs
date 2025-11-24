@@ -18,5 +18,10 @@ namespace BLL
         {
             return new MapperProducto().GetById(id);
         }
+
+        public int Update(BE.Producto pr)
+        {
+            return new MapperProducto().Update(pr);
+        }
     }
 }
