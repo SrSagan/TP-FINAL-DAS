@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +24,8 @@ namespace BLL
             if (username != null && password != null)
             {
                 BE.Usuario user = Get(username);
-                return user.Password == password;
+                Console.WriteLine(user.Password + "    " + password + "     " + Cripto.ComputeSha256Hash(password));
+                return user.Password == Cripto.ComputeSha256Hash(password);
             }
             return false;
         }

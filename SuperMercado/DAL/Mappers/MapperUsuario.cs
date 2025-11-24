@@ -16,6 +16,7 @@ namespace DAL
         public int Create(Usuario entity)
         {
             SqlParameter[] parameters = new SqlParameter[6];
+            Console.WriteLine(entity.Password);
             parameters[0] = new SqlParameter("@Nombre", entity.Nombre);
             parameters[1] = new SqlParameter("@Apellido", entity.Apellido);
             parameters[2] = new SqlParameter("@Dni", entity.Dni);
@@ -83,7 +84,6 @@ namespace DAL
 
             DataRow row = dt.Rows[0];
             Usuario usr = new Usuario(
-            (int)row["Id"],
             row["Nombre"].ToString(),
             row["Apellido"].ToString(),
             (int)row["Dni"],

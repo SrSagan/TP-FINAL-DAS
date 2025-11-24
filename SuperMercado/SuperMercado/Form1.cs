@@ -47,5 +47,12 @@ namespace SuperMercado
             administrar.MdiParent = this;
             administrar.Show();
         }
+
+        private void crearCuentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SignUp signup = new SignUp();
+            signup.MdiParent = this;
+            signup.Show();
+        }
     }
 }
