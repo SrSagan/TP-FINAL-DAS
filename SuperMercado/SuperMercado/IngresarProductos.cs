@@ -15,10 +15,11 @@ namespace SuperMercado
     {
         private BE.Factura factura = new BE.Factura(new BE.Usuario(), new BE.OrdenDeCompra());
         private List<BE.Producto> productos = new BLL.Producto().getProductos();
-        public IngresarProductos()
+        public IngresarProductos(int userId)
         {
             InitializeComponent();
             numberInput1.Label1 = label1;
+            factura.Cliente = new BLL.Usuario().GetById(userId);
             actualizarStock();
         }
 

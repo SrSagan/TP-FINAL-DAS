@@ -91,6 +91,7 @@ namespace DAL
             row["Password"].ToString(),
             (int)row["Familia"]
             );
+            usr.Id = (int)row["Id"];
 
             return usr;
         }

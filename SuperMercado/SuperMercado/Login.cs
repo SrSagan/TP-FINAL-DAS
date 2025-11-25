@@ -25,10 +25,13 @@ namespace SuperMercado
                 string mail = mailInput1.Validar();
                 string password = passwordInput1.Validar();
                 if(new BLL.Usuario().Validar(mail,password))
+                { 
+                    ((Form1)this.MdiParent).UserId = new BLL.Usuario().GetByMail(mail).Id;
+                    this.Close();
+                }
+                else
                 {
-                    IngresarProductos ingresar = new IngresarProductos();
-                    ingresar.Show();
-                    this.Hide();
+                    MessageBox.Show("El usuario o contraseña son incorrectos");
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -42,9 +45,7 @@ namespace SuperMercado
                 string password = passwordInput1.Validar();
                 if (new BLL.Usuario().Validar(mail, password))
                 {
-                    IngresarProductos ingresar = new IngresarProductos();
-                    ingresar.Show();
-                    this.Hide();
+                    this.Close();
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

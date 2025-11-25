@@ -12,6 +12,12 @@ namespace SuperMercado
 {
     public partial class Form1 : Form
     {
+        private int userId = -1;
+        public int UserId
+        {
+            get { return userId; }
+            set { userId = value; }
+        }
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +37,7 @@ namespace SuperMercado
 
         private void seleccionarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IngresarProductos ingresar = new IngresarProductos();
+            IngresarProductos ingresar = new IngresarProductos(userId);
             ingresar.MdiParent = this;
             ingresar.Show();
         }

@@ -30,9 +30,7 @@ namespace SuperMercado
             if(valor != 0 )
             {
                 MessageBox.Show("USUARIO CREADO");
-                IngresarProductos ingresar = new IngresarProductos();
-                ingresar.Show();
-                this.Hide();
+                this.Close();
             }
         }
     }

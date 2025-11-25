@@ -14,20 +14,26 @@ namespace BLL
         {
             return new DAL.MapperUsuario().Create(usr);
         }
-        public BE.Usuario Get(String mail)
+        public BE.Usuario GetByMail(String mail)
         {
             return new DAL.MapperUsuario().GetByMail(mail);
+        }
+
+        public BE.Usuario GetById(int id)
+        {
+            return new DAL.MapperUsuario().GetById(id);
         }
 
         public bool Validar(string username, string password)
         {
             if (username != null && password != null)
             {
-                BE.Usuario user = Get(username);
+                BE.Usuario user = GetByMail(username);
                 Console.WriteLine(user.Password + "    " + password + "     " + Cripto.ComputeSha256Hash(password));
                 return user.Password == Cripto.ComputeSha256Hash(password);
             }
             return false;
         }
+
     }
 }
