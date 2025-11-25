@@ -418,3 +418,4 @@ FodyWeavers.xsd
 *.msp
 
 Acceso.cs
+SuperMercado/DAL/Acceso.cs
