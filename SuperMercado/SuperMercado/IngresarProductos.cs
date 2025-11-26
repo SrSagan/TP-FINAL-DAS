@@ -117,6 +117,10 @@ namespace SuperMercado
             DialogResult a = MessageBox.Show("¿Esta seguro que quiere terminar la compra?", "Terminar compra", MessageBoxButtons.YesNo);
             if(a == DialogResult.Yes)
             {
+                foreach(BE.Pedido pedido in factura.Compra.Pedidos)
+                {
+                    factura.PrecioTotal += pedido.Precio;
+                }
                 new BLL.Factura().Create(factura);
                 factura.Id = new BLL.Factura().GetLast().Id;
 

@@ -37,6 +37,7 @@ namespace DAL
                     new MapperUsuario().GetById((int)row["UsuarioId"]),
                     new BE.OrdenDeCompra(new List<Pedido> { })
                     );
+                factura.PrecioTotal = float.Parse(row["PrecioTotal"].ToString());
                 factura.Id = (int)row["Id"];
                 facturas.Add(factura);
             }

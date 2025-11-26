@@ -38,6 +38,10 @@ namespace BLL
             }
             return false;
         }
+        public int UpdatePassword (BE.Usuario usr, string password)
+        {
+            return new DAL.MapperUsuario().UpdatePassword(usr, password);
+        }
 
     }
 }

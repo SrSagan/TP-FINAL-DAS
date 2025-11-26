@@ -29,9 +29,9 @@ namespace BE
         {
             get
             {
-                precioTotal = compra.PrecioTotal;
                 return precioTotal;
             }
+            set { precioTotal = value; }
         }
 
         public Factura(Usuario cliente, OrdenDeCompra compra)

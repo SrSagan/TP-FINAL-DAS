@@ -62,6 +62,25 @@ namespace DAL.Mappers
             pedido.Id = id;
             return pedido;
         }
+        public List<Pedido> GetByFacId(int id)
+        {
+            List<Pedido> pedidos = new List<Pedido>();
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@FacturaId", id);
+
+            DataTable dt = acceso.Leer("sp_Pedido_GetByFacId", parameters);
+            foreach(DataRow row in dt.Rows)
+            {
+                Pedido pedido = new Pedido(
+                        new MapperProducto().GetById((int)row["ProductoId"]),
+                        (int)row["Cantidad"]
+                        );
+                pedido.Id = (int)row["Id"];
+                pedidos.Add(pedido);
+            }
+
+            return pedidos;
+        }
 
         public int Update(Pedido entity, int FacturaId)
         {
