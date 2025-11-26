@@ -45,7 +45,9 @@ namespace SuperMercado
 
         private void verFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            VisualizarFactura form = new VisualizarFactura();
+            form.MdiParent = this;
+            form.Show();
         }
 
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
