@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,10 @@ namespace BLL
         {
             return new DAL.MapperFactura().Create(fac);
         }
-
+        public List<BE.Factura> getFacturas()
+        {
+            return new DAL.MapperFactura().GetAll();
+        }
         public BE.Factura GetLast()
         {
             return new DAL.MapperFactura().GetLast();
