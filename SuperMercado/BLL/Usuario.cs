@@ -18,7 +18,11 @@ namespace BLL
         {
             return new DAL.MapperUsuario().GetByMail(mail);
         }
-
+        public bool ExistsByMail(string mail)
+        {
+            var user = new DAL.MapperUsuario().GetByMail(mail);
+            return user != null;
+        }
         public BE.Usuario GetById(int id)
         {
             return new DAL.MapperUsuario().GetById(id);

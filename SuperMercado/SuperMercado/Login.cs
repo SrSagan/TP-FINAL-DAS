@@ -1,4 +1,5 @@
 ﻿using BLL;
+using CustomControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,9 +26,11 @@ namespace SuperMercado
                 string mail = mailInput1.Validar();
                 string password = passwordInput1.Validar();
                 if(new BLL.Usuario().Validar(mail,password))
-                { 
-                    ((Form1)this.MdiParent).UserId = new BLL.Usuario().GetByMail(mail).Id;
-                    this.Close();
+                {
+                    int id = new BLL.Usuario().GetByMail(mail).Id;
+                    Form1 form1 = new Form1(id);
+                    form1.Show();
+                    this.Hide();
                 }
                 else
                 {
@@ -36,21 +39,6 @@ namespace SuperMercado
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string mail = mailInput1.Validar();
-                string password = passwordInput1.Validar();
-                if (new BLL.Usuario().Validar(mail, password))
-                {
-                    this.Close();
-                }
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-        }
-
         private void Login_Load(object sender, EventArgs e)
         {
         }
