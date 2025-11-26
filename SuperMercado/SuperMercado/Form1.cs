@@ -18,9 +18,10 @@ namespace SuperMercado
             get { return userId; }
             set { userId = value; }
         }
-        public Form1()
+        public Form1(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
         }
 
         private void Form1_Load(object sender, EventArgs e)

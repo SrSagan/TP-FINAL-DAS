@@ -82,6 +82,9 @@ namespace DAL
 
             DataTable dt = acceso.Leer("sp_Usuario_GetByMail", parameters);
 
+            if (dt.Rows.Count == 0)
+                return null;
+
             DataRow row = dt.Rows[0];
             Usuario usr = new Usuario(
             row["Nombre"].ToString(),
