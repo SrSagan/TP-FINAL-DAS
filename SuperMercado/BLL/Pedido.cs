@@ -12,5 +12,9 @@ namespace BLL
         {
             return new DAL.Mappers.MapperPedido().Create(pedido, facturaId);
         }
+        public List<BE.Pedido> GetPedidosByFacId(int id)
+        {
+            return new DAL.Mappers.MapperPedido().GetByFacId(id);
+        }
     }
 }

@@ -42,5 +42,19 @@ namespace SuperMercado
         private void Login_Load(object sender, EventArgs e)
         {
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SignUp signUp= new SignUp();
+            signUp.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OlvideMiContraseña olvideMiContraseña = new OlvideMiContraseña();
+            olvideMiContraseña.Show();
+            this.Hide();
+        }
     }
 }

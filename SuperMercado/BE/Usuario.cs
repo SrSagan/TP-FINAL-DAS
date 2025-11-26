@@ -44,6 +44,7 @@ namespace BE
         public string Password
         {
             get { return password; }
+
         }
 
         public int Familia
