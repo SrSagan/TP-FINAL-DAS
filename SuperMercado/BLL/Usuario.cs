@@ -23,6 +23,11 @@ namespace BLL
             var user = new DAL.MapperUsuario().GetByMail(mail);
             return user != null;
         }
+        public bool ExistsByDNI(int DNI)
+        {
+            var user = new DAL.MapperUsuario().GetByDNI(DNI);
+            return user != null;
+        }
         public BE.Usuario GetById(int id)
         {
             return new DAL.MapperUsuario().GetById(id);

@@ -27,24 +27,41 @@ namespace SuperMercado
             try
             {
                 string contraseña = Cripto.ComputeSha256Hash(passwordInput1.Validar());
-                BE.Usuario usuario = new BE.Usuario(textInput1.Validar(), textInput2.Validar(), numberInput1.Validar(), mailInput1.Validar(), contraseña,0);
-                if(!new BLL.Usuario().ExistsByMail(mailInput1.Validar()))
+                BE.Usuario usuario = new BE.Usuario(textInput1.Validar(), textInput2.Validar(), numberInput1.Validar(), mailInput1.Validar(), contraseña,0);                    
+                if(numberInput1.Validar().ToString().Length != 8)
                 {
-                    int valor = new BLL.Usuario().Create(usuario);
-            
-                    if(valor != 0 )
-                    {
-                        MessageBox.Show("USUARIO CREADO");
-                        int id = new BLL.Usuario().GetByMail(mailInput1.Validar()).Id;
-                        Form1 form = new Form1(id);
-                        form.Show();
-                        this.Hide();
-                    }
+                    MessageBox.Show("La longitud del DNI es invalida");
                 }
                 else
                 {
-                    MessageBox.Show("Ya existe un usuario con ese mail");
+                    if (!new BLL.Usuario().ExistsByMail(mailInput1.Validar()) && !new BLL.Usuario().ExistsByDNI(numberInput1.Validar()))
+                    {
+
+                        int valor = new BLL.Usuario().Create(usuario);
+
+                        if (valor != 0)
+                        {
+                            MessageBox.Show("USUARIO CREADO");
+                            int id = new BLL.Usuario().GetByMail(mailInput1.Validar()).Id;
+                            Form1 form = new Form1(id);
+                            form.Show();
+                            this.Hide();
+                        }
+
+                    }
+                    else
+                    {
+                        if (new BLL.Usuario().ExistsByMail(mailInput1.Validar()))
+                        {
+                            MessageBox.Show("Ya existe un usuario con ese mail");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya existe un usuario con ese DNI");
+                        }
+                    }
                 }
+
             }
             catch(Exception ex)
             {
