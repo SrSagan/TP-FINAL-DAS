@@ -63,6 +63,7 @@
             this.mercadoGrid.Location = new System.Drawing.Point(12, 26);
             this.mercadoGrid.MultiSelect = false;
             this.mercadoGrid.Name = "mercadoGrid";
+            this.mercadoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.mercadoGrid.Size = new System.Drawing.Size(355, 412);
             this.mercadoGrid.TabIndex = 0;
             this.mercadoGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mercadoGrid_CellClick);

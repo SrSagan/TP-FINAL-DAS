@@ -49,6 +49,15 @@ namespace CustomControls
         public new string Validar()
         {
             string password = ValidarTexto();
+            if(password.Length<8)
+            {
+                setColorError();
+                throw new Exception("La contraseña debe tener al menos 8 caracteres");
+            }
+            else
+            {
+                setColorValido();
+            }
             /*checkLength(password);
             checkSpecial(password);
             checkNumber(password);*/

@@ -63,5 +63,13 @@ namespace SuperMercado
             signup.MdiParent = this;
             signup.Show();
         }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            userId = -1;
+            SignUp sign = new SignUp();
+            sign.Show();
+            this.Close();
+        }
     }
 }
