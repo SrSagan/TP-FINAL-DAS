@@ -7,19 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BE;
 using BLL;
 
 namespace SuperMercado
 {
     public partial class IngresarProductos : Form
     {
+        private readonly BE.Usuario _usuario;
+        private readonly BLL.Usuario _userBLL;
         private BE.Factura factura = new BE.Factura(new BE.Usuario(), new BE.OrdenDeCompra());
         private List<BE.Producto> productos = new BLL.Producto().getProductos();
-        public IngresarProductos(int userId)
+        public IngresarProductos()
         {
             InitializeComponent();
             numberInput1.Label1 = label1;
-            factura.Cliente = new BLL.Usuario().GetById(userId);
+            _userBLL = new BLL.Usuario();
+            _usuario = _userBLL.GetInstanceUser();
+            factura.Cliente = new BLL.Usuario().GetById(_usuario.Id);
             actualizarStock();
         }
 
