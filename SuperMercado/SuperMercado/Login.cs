@@ -27,8 +27,10 @@ namespace SuperMercado
                 string password = passwordInput1.Validar();
                 if(new BLL.Usuario().Validar(mail,password))
                 {
-                    int id = new BLL.Usuario().GetByMail(mail).Id;
-                    Form1 form1 = new Form1(id);
+                    BE.Usuario user = new BLL.Usuario().GetByMail(mail);
+                    user = new BLL.Usuario().Login(user);
+                    MessageBox.Show("Inicio de sesión exitoso.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Form1 form1 = new Form1();
                     form1.Show();
                     this.Hide();
                 }
@@ -45,7 +47,7 @@ namespace SuperMercado
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SignUp signUp= new SignUp();
+            SignUp signUp = new SignUp();
             signUp.Show();
             this.Hide();
         }

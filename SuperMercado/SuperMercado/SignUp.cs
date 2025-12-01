@@ -42,12 +42,12 @@ namespace SuperMercado
                         if (valor != 0)
                         {
                             MessageBox.Show("USUARIO CREADO");
-                            int id = new BLL.Usuario().GetByMail(mailInput1.Validar()).Id;
-                            Form1 form = new Form1(id);
+                            BE.Usuario user = new BLL.Usuario().GetByMail(mailInput1.Validar());
+                            user = new BLL.Usuario().Login(user);
+                            Form1 form = new Form1();
                             form.Show();
                             this.Hide();
                         }
-
                     }
                     else
                     {

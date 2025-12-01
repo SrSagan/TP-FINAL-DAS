@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,18 +13,10 @@ namespace SuperMercado
 {
     public partial class Form1 : Form
     {
-        private int userId = -1;
-        public int UserId
-        {
-            get { return userId; }
-            set { userId = value; }
-        }
-        public Form1(int userId)
+        public Form1()
         {
             InitializeComponent();
-            this.userId = userId;
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -38,7 +31,7 @@ namespace SuperMercado
 
         private void seleccionarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IngresarProductos ingresar = new IngresarProductos(userId);
+            IngresarProductos ingresar = new IngresarProductos();
             ingresar.MdiParent = this;
             ingresar.Show();
         }
@@ -66,8 +59,8 @@ namespace SuperMercado
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            userId = -1;
-            SignUp sign = new SignUp();
+            new BLL.Usuario().LogOut();
+            Login sign = new Login();
             sign.Show();
             this.Close();
         }
