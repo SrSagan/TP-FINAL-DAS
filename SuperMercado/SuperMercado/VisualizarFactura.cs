@@ -16,6 +16,7 @@ namespace SuperMercado
         public VisualizarFactura()
         {
             InitializeComponent();
+            CargarFacturas();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,48 +75,15 @@ namespace SuperMercado
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            ds.ReadXml("D:\\Facturas.xml");
-
-            DataTable facturas = ds.Tables["Factura"];
-            DataTable pedidos = ds.Tables["Pedido"];
-
-            // Tabla combinada final
-            DataTable dtFinal = new DataTable();
-            dtFinal.Columns.Add("FacturaId", typeof(int));
-            dtFinal.Columns.Add("Cliente", typeof(string));
-            dtFinal.Columns.Add("Mail",typeof(string));
-            dtFinal.Columns.Add("DNI",typeof(string));
-            dtFinal.Columns.Add("Producto", typeof(string));
-            dtFinal.Columns.Add("Cantidad", typeof(int));
-            dtFinal.Columns.Add("Precio", typeof(float));
-            dtFinal.Columns.Add("TotalFactura", typeof(float));
-            foreach (DataRow fac in facturas.Rows)
-            {
-                int id = Convert.ToInt32(fac["Id"]);
-                string cliente = fac["UsuarioNombre"].ToString();
-                float total = Convert.ToSingle(fac["PrecioTotal"]);
-
-                // Filtrar pedidos correspondientes a esta factura
-                DataRow[] pedidosFiltrados = pedidos.Select($"FacturaId = {id}");
-
-                foreach (DataRow ped in pedidosFiltrados)
-                {
-                    DataRow row = dtFinal.NewRow();
-                    row["FacturaId"] = id;
-                    row["Mail"] = fac["Mail"];
-                    row["DNI"] = fac["DNI"];
-                    row["Cliente"] = cliente;
-                    row["Producto"] = ped["ProductoNombre"];
-                    row["Cantidad"] = ped["Cantidad"];
-                    row["Precio"] = ped["Precio"];
-                    row["TotalFactura"] = total;
-                    dtFinal.Rows.Add(row);
-                }
-            }
-
-            dataGridView1.DataSource = dtFinal;
+            CargarFacturas();
         }
-
+        private void CargarFacturas()
+        {
+            List<BE.Factura> facturas = new BLL.Factura().getFacturas();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = facturas;
+            dataGridView1.Columns["Cliente"].Visible = false;
+            dataGridView1.Columns["Compra"].Visible = false;
+        }
     }
 }
