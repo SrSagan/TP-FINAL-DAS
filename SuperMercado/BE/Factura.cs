@@ -43,5 +43,29 @@ namespace BE
         {
 
         }
+        public string ClienteNombreCompleto
+        {
+            get
+            {
+                if (cliente == null) return "";
+                return $"{cliente.Nombre} {cliente.Apellido}";
+            }
+        }
+        public string ClienteDni
+        {
+            get
+            {
+                if (cliente == null) return "";
+                return cliente.Dni.ToString();
+            }
+        }
+        public string ClienteMail
+        {
+            get
+            {
+                if (cliente == null) return "";
+                return cliente.Mail;
+            }
+        }
     }
 }
