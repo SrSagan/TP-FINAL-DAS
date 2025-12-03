@@ -13,13 +13,24 @@ namespace SuperMercado
 {
     public partial class Form1 : Form
     {
+        private readonly BE.Usuario _usuario;
+        private readonly BLL.Usuario _userBLL;
         public Form1()
         {
+            _userBLL = new BLL.Usuario();
+            _usuario = _userBLL.GetInstanceUser();
             InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            if(_usuario.Familia == 1)
+            {
+                comprarToolStripMenuItem.Visible = false;
+            }
+            else if(_usuario.Familia == 0)
+            {
+                administrarToolStripMenuItem.Visible = false;
+            }
         }
 
         private void ingresoToolStripMenuItem_Click(object sender, EventArgs e)
