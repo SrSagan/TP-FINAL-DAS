@@ -36,7 +36,10 @@ namespace BLL
         {
             return new DAL.MapperUsuario().GetById(id);
         }
-
+        public List<BE.Usuario> GetUsuarios()
+        {
+            return new DAL.MapperUsuario().GetAll();
+        }
         public bool Validar(string username, string password)
         {
             if (username != null && password != null)
@@ -58,6 +61,10 @@ namespace BLL
         public int UpdatePassword (BE.Usuario usr, string password)
         {
             return new DAL.MapperUsuario().UpdatePassword(usr, password);
+        }
+        public int UpdateUser(BE.Usuario usr)
+        {
+            return new DAL.MapperUsuario().Update(usr);
         }
 
     }

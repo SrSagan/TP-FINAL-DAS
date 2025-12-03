@@ -75,5 +75,12 @@ namespace SuperMercado
             sign.Show();
             this.Close();
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministrarUsuarios form = new AdministrarUsuarios();
+            form.MdiParent = this;
+            form.Show();
+        }
     }
 }
