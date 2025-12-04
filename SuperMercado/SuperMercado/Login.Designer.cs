@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.passwordInput1 = new CustomControls.PasswordInput();
-            this.mailInput1 = new CustomControls.MailInput();
+            this.t = new CustomControls.MailInput();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -52,7 +52,7 @@
             this.button1.Location = new System.Drawing.Point(180, 180);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 33);
-            this.button1.TabIndex = 3;
+            this.button1.TabIndex = 2;
             this.button1.Text = "INGRESAR";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -65,18 +65,18 @@
             this.passwordInput1.Name = "passwordInput1";
             this.passwordInput1.PasswordChar = '*';
             this.passwordInput1.Size = new System.Drawing.Size(328, 30);
-            this.passwordInput1.TabIndex = 4;
+            this.passwordInput1.TabIndex = 1;
             this.passwordInput1.TextBoxWidth = 236;
             // 
-            // mailInput1
+            // t
             // 
-            this.mailInput1.ErrorColor = System.Drawing.Color.Red;
-            this.mailInput1.LabelText = "Email";
-            this.mailInput1.Location = new System.Drawing.Point(72, 83);
-            this.mailInput1.Name = "mailInput1";
-            this.mailInput1.Size = new System.Drawing.Size(290, 30);
-            this.mailInput1.TabIndex = 0;
-            this.mailInput1.TextBoxWidth = 237;
+            this.t.ErrorColor = System.Drawing.Color.Red;
+            this.t.LabelText = "Email";
+            this.t.Location = new System.Drawing.Point(72, 83);
+            this.t.Name = "t";
+            this.t.Size = new System.Drawing.Size(290, 30);
+            this.t.TabIndex = 0;
+            this.t.TextBoxWidth = 237;
             // 
             // button2
             // 
@@ -84,7 +84,7 @@
             this.button2.Location = new System.Drawing.Point(167, 219);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(141, 48);
-            this.button2.TabIndex = 5;
+            this.button2.TabIndex = 3;
             this.button2.Text = "No tienes cuenta? Cree una";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -95,7 +95,7 @@
             this.button3.Location = new System.Drawing.Point(382, 265);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(114, 48);
-            this.button3.TabIndex = 6;
+            this.button3.TabIndex = 4;
             this.button3.Text = "Olvide mi contraseña";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -110,7 +110,7 @@
             this.Controls.Add(this.passwordInput1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.mailInput1);
+            this.Controls.Add(this.t);
             this.Name = "Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
@@ -121,7 +121,7 @@
 
         #endregion
 
-        private CustomControls.MailInput mailInput1;
+        private CustomControls.MailInput t;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private CustomControls.PasswordInput passwordInput1;

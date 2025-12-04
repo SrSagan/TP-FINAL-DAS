@@ -23,7 +23,7 @@ namespace SuperMercado
         {
             try
             {
-                string mail = mailInput1.Validar();
+                string mail = t.Validar();
                 string password = passwordInput1.Validar();
                 if(new BLL.Usuario().Validar(mail,password))
                 {

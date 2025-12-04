@@ -39,20 +39,20 @@
             // 
             this.passwordInput1.ErrorColor = System.Drawing.Color.Red;
             this.passwordInput1.LabelText = "Nueva Contraseña";
-            this.passwordInput1.Location = new System.Drawing.Point(125, 154);
+            this.passwordInput1.Location = new System.Drawing.Point(15, 150);
             this.passwordInput1.Name = "passwordInput1";
             this.passwordInput1.PasswordChar = '*';
             this.passwordInput1.Size = new System.Drawing.Size(373, 30);
-            this.passwordInput1.TabIndex = 7;
+            this.passwordInput1.TabIndex = 1;
             this.passwordInput1.TextBoxWidth = 236;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Comic Sans MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(293, 205);
+            this.button1.Location = new System.Drawing.Point(43, 233);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 57);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Cambiar Contraseña";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -61,19 +61,19 @@
             // 
             this.mailInput1.ErrorColor = System.Drawing.Color.Red;
             this.mailInput1.LabelText = "Email";
-            this.mailInput1.Location = new System.Drawing.Point(208, 103);
+            this.mailInput1.Location = new System.Drawing.Point(98, 99);
             this.mailInput1.Name = "mailInput1";
             this.mailInput1.Size = new System.Drawing.Size(290, 30);
-            this.mailInput1.TabIndex = 5;
+            this.mailInput1.TabIndex = 0;
             this.mailInput1.TextBoxWidth = 237;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Comic Sans MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(293, 286);
+            this.button2.Location = new System.Drawing.Point(264, 233);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(109, 57);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Recorde mi contraseña";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -82,7 +82,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(226, 40);
+            this.label1.Location = new System.Drawing.Point(62, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(292, 31);
             this.label1.TabIndex = 9;
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 368);
+            this.ClientSize = new System.Drawing.Size(417, 318);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.passwordInput1);
