@@ -13,8 +13,12 @@ namespace SuperMercado
 {
     public partial class VisualizarFactura : Form
     {
+        private readonly BE.Usuario _usuario;
+        private readonly BLL.Usuario _userBLL;
         public VisualizarFactura()
         {
+            _userBLL = new BLL.Usuario();
+            _usuario = _userBLL.GetInstanceUser();
             InitializeComponent();
             CargarFacturas();
         }
@@ -80,6 +84,15 @@ namespace SuperMercado
         private void CargarFacturas()
         {
             List<BE.Factura> facturas = new BLL.Factura().getFacturas();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = facturas;
+            dataGridView1.Columns["Cliente"].Visible = false;
+            dataGridView1.Columns["Compra"].Visible = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List<BE.Factura> facturas = new BLL.Factura().getFacturasByID(_usuario.Id);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = facturas;
             dataGridView1.Columns["Cliente"].Visible = false;
