@@ -17,6 +17,10 @@ namespace BLL
         {
             return new DAL.MapperFactura().GetAll();
         }
+        public List<BE.Factura> getFacturasByID(int id)
+        {
+            return new DAL.MapperFactura().GetAllByID(id);
+        }
         public BE.Factura GetLast()
         {
             return new DAL.MapperFactura().GetLast();

@@ -43,6 +43,24 @@ namespace DAL
             }
             return facturas;
         }
+        public List<Factura> GetAllByID(int id)
+        {
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@Id", id);
+            DataTable dt = acceso.Leer("sp_Factura_GetAllByID", parameters);
+            List<Factura> facturas = new List<Factura>();
+            foreach (DataRow row in dt.Rows)
+            {
+                Factura factura = new Factura(
+                    new MapperUsuario().GetById((int)row["UsuarioId"]),
+                    new BE.OrdenDeCompra(new List<Pedido> { })
+                    );
+                factura.PrecioTotal = float.Parse(row["PrecioTotal"].ToString());
+                factura.Id = (int)row["Id"];
+                facturas.Add(factura);
+            }
+            return facturas;
+        }
 
         public Factura GetById(int id)
         {
