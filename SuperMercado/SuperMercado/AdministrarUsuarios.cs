@@ -18,7 +18,12 @@ namespace SuperMercado
         {
             _userBLL = new BLL.Usuario();
             _usuario = _userBLL.GetInstanceUser();
-            InitializeComponent();
+            InitializeComponent();            
+            comboBox1.Items.Add(new { Texto = "Comprador"});
+            comboBox1.Items.Add(new { Texto = "Administrador"});
+            comboBox1.Items.Add(new { Texto = "SuperAdministrador"});
+
+            comboBox1.DisplayMember = "Texto";
             actualizarDataGrid();
         }
         private void actualizarDataGrid()
@@ -41,13 +46,24 @@ namespace SuperMercado
                 MessageBox.Show("No puede actualizar su propio usuario");
                 return;
             }
-            usuarioSeleccionado.Familia = int.Parse(numericUpDown1.Value.ToString());
+            if (comboBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un rol");
+                return;
+            }
+            usuarioSeleccionado.Familia = comboBox1.SelectedIndex;
             int valor = new BLL.Usuario().UpdateUser(usuarioSeleccionado);
             if(valor != 0)
             {
                 MessageBox.Show($"El usuario {usuarioSeleccionado.Nombre} fue actualizado");
             }
             actualizarDataGrid();
+        }
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null) return;
+            BE.Usuario u = (BE.Usuario)dataGridView1.CurrentRow.DataBoundItem;
+            comboBox1.SelectedIndex = u.Familia;
         }
     }
 }
