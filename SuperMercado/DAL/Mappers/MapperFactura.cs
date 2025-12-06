@@ -35,7 +35,7 @@ namespace DAL
             {
                 Factura factura = new Factura(
                     new MapperUsuario().GetById((int)row["UsuarioId"]),
-                    new BE.OrdenDeCompra(new List<Pedido> { })
+                    new BE.OrdenDeCompra(new DAL.Mappers.MapperPedido().GetByFacId((int)row["Id"]))
                     );
                 factura.PrecioTotal = float.Parse(row["PrecioTotal"].ToString());
                 factura.Id = (int)row["Id"];
@@ -53,7 +53,7 @@ namespace DAL
             {
                 Factura factura = new Factura(
                     new MapperUsuario().GetById((int)row["UsuarioId"]),
-                    new BE.OrdenDeCompra(new List<Pedido> { })
+                    new BE.OrdenDeCompra(new DAL.Mappers.MapperPedido().GetByFacId((int)row["Id"]))
                     );
                 factura.PrecioTotal = float.Parse(row["PrecioTotal"].ToString());
                 factura.Id = (int)row["Id"];
@@ -101,6 +101,52 @@ namespace DAL
             factura.Id = (int)row["Id"];
 
             return factura;
+        }
+
+        public void GenerarXml()
+        {
+            List<Factura> facturas = GetAll();
+            DataSet ds = new DataSet("FacturasDataSet");
+
+            DataTable dtFactura = new DataTable("Factura");
+            dtFactura.Columns.Add("Id", typeof(int));
+            dtFactura.Columns.Add("UsuarioNombre", typeof(string));
+            dtFactura.Columns.Add("Mail", typeof(string));
+            dtFactura.Columns.Add("DNI", typeof(int));
+            dtFactura.Columns.Add("PrecioTotal", typeof(float));
+
+            DataTable dtPedidos = new DataTable("Pedido");
+            dtPedidos.Columns.Add("FacturaId", typeof(int));
+            dtPedidos.Columns.Add("ProductoNombre", typeof(string));
+            dtPedidos.Columns.Add("Cantidad", typeof(int));
+            dtPedidos.Columns.Add("Precio", typeof(float));
+
+            foreach (var fac in facturas)
+            {
+                DataRow rowF = dtFactura.NewRow();
+                rowF["Id"] = fac.Id;
+                rowF["UsuarioNombre"] = fac.Cliente.Nombre + " " + fac.Cliente.Apellido;
+                rowF["Mail"] = fac.Cliente.Mail;
+                rowF["DNI"] = (int)fac.Cliente.Dni;
+                rowF["PrecioTotal"] = fac.PrecioTotal;
+                dtFactura.Rows.Add(rowF);
+                List<BE.Pedido> pedidos = new DAL.Mappers.MapperPedido().GetByFacId(fac.Id);
+
+                foreach (var pedido in pedidos)
+                {
+                    DataRow rowP = dtPedidos.NewRow();
+                    rowP["FacturaId"] = fac.Id;
+                    rowP["ProductoNombre"] = pedido.Producto.Nombre;
+                    rowP["Cantidad"] = pedido.Cantidad;
+                    rowP["Precio"] = pedido.Precio;
+                    dtPedidos.Rows.Add(rowP);
+                }
+            }
+
+            ds.Tables.Add(dtFactura);
+            ds.Tables.Add(dtPedidos);
+
+            ds.WriteXml("C:\\test\\Facturas.xml"); 
         }
     }
 }

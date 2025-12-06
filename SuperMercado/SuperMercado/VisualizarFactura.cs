@@ -20,7 +20,10 @@ namespace SuperMercado
             _userBLL = new BLL.Usuario();
             _usuario = _userBLL.GetInstanceUser();
             InitializeComponent();
-            CargarFacturas();
+            List<BE.Factura> facturas = new BLL.Factura().getFacturasByID(_usuario.Id);
+            comboBox1.DataSource = null;
+            comboBox1.DataSource = facturas;
+            comboBox1.DisplayMember = "Id";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,74 +32,30 @@ namespace SuperMercado
         }
         private void GenerarXML()
         {
-            List<BE.Factura> facturas = new BLL.Factura().getFacturas();
+            new BLL.Factura().GenerarXml();
+            MessageBox.Show("XML generado");
+        }
 
-            DataSet ds = new DataSet("FacturasDataSet");
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BE.Factura factura = (BE.Factura)comboBox1.SelectedItem;
+            actualizarDisplay(factura);
+        }
 
-            DataTable dtFactura = new DataTable("Factura");
-            dtFactura.Columns.Add("Id", typeof(int));
-            dtFactura.Columns.Add("UsuarioNombre", typeof(string));
-            dtFactura.Columns.Add("Mail", typeof(string));
-            dtFactura.Columns.Add("DNI", typeof(int));
-            dtFactura.Columns.Add("PrecioTotal", typeof(float));
-
-            DataTable dtPedidos = new DataTable("Pedido");
-            dtPedidos.Columns.Add("FacturaId", typeof(int));
-            dtPedidos.Columns.Add("ProductoNombre", typeof(string));
-            dtPedidos.Columns.Add("Cantidad", typeof(int));
-            dtPedidos.Columns.Add("Precio", typeof(float));
-
-            foreach (var fac in facturas)
+        private void actualizarDisplay(BE.Factura factura)
+        {
+            dataGridView1.Rows.Clear();
+            //mercadoGrid.DataSource = productos;
+            foreach (BE.Pedido p in factura.Compra.Pedidos)
             {
-                DataRow rowF = dtFactura.NewRow();
-                rowF["Id"] = fac.Id;
-                rowF["UsuarioNombre"] = fac.Cliente.Nombre + " " + fac.Cliente.Apellido;
-                rowF["Mail"] = fac.Cliente.Mail;
-                rowF["DNI"] = (int)fac.Cliente.Dni;
-                rowF["PrecioTotal"] = fac.PrecioTotal;
-                dtFactura.Rows.Add(rowF);
-                List<BE.Pedido> pedidos = new BLL.Pedido().GetPedidosByFacId(fac.Id);
-
-                foreach (var pedido in pedidos)
-                {
-                    DataRow rowP = dtPedidos.NewRow();
-                    rowP["FacturaId"] = fac.Id;
-                    rowP["ProductoNombre"] = pedido.Producto.Nombre;
-                    rowP["Cantidad"] = pedido.Cantidad;
-                    rowP["Precio"] = pedido.Precio;
-                    dtPedidos.Rows.Add(rowP);
-                }
+                dataGridView1.Rows.Add(p.Id, p.Producto.Nombre, p.Cantidad, p.Producto.Precio, p.Precio);
             }
 
-            ds.Tables.Add(dtFactura);
-            ds.Tables.Add(dtPedidos);
-
-            string path = @"D:\Facturas.xml";
-            ds.WriteXml(path);
-
-            MessageBox.Show($"XML generado en {path}");
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            CargarFacturas();
-        }
-        private void CargarFacturas()
-        {
-            List<BE.Factura> facturas = new BLL.Factura().getFacturas();
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = facturas;
-            dataGridView1.Columns["Cliente"].Visible = false;
-            dataGridView1.Columns["Compra"].Visible = false;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            List<BE.Factura> facturas = new BLL.Factura().getFacturasByID(_usuario.Id);
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = facturas;
-            dataGridView1.Columns["Cliente"].Visible = false;
-            dataGridView1.Columns["Compra"].Visible = false;
+            txtNum.Text = factura.Id.ToString();
+            txtNombre.Text = factura.Cliente.Nombre;
+            txtApellido.Text = factura.Cliente.Apellido;
+            txtMail.Text = factura.Cliente.Mail;
+            txtTotal.Text = "$" + factura.PrecioTotal.ToString();
         }
     }
 }

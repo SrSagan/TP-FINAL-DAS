@@ -17,7 +17,8 @@ namespace SuperMercado
         private readonly BE.Usuario _usuario;
         private readonly BLL.Usuario _userBLL;
         private BE.Factura factura = new BE.Factura(new BE.Usuario(), new BE.OrdenDeCompra());
-        private List<BE.Producto> productos = new BLL.Producto().getProductos();
+        private BLL.Producto productoAdmin = new BLL.Producto();
+
         public IngresarProductos()
         {
             InitializeComponent();
@@ -25,10 +26,11 @@ namespace SuperMercado
             _userBLL = new BLL.Usuario();
             _usuario = _userBLL.GetInstanceUser();
             factura.Cliente = new BLL.Usuario().GetById(_usuario.Id);
-            actualizarStock();
+            List<BE.Producto> productos = productoAdmin.CrearProductosTemporal();
+            actualizarStock(productos);
         }
 
-        private void actualizarStock()
+        private void actualizarStock(List<BE.Producto> productos)
         {
             mercadoGrid.Rows.Clear();
             //mercadoGrid.DataSource = productos;
@@ -58,12 +60,10 @@ namespace SuperMercado
             try
             {
                 int cantidadComprar = numberInput1.Validar(); //validamos que la cantidad sea menor a la cantidad
-                int stock = int.Parse(mercadoGrid.SelectedRows[0].Cells[2].Value.ToString());
-
-                if (stock < cantidadComprar) throw new Exception("La cantidad supera el stock disponible");
-
                 int id = int.Parse(mercadoGrid.SelectedRows[0].Cells[0].Value.ToString());
-                BE.Producto producto = productos.Where(p => p.Id == id).First();
+
+                if (!productoAdmin.CompararStock(cantidadComprar, id)) throw new Exception("La cantidad supera el stock disponible");
+                BE.Producto producto = productoAdmin.GetById(id);
 
                 if (factura.Compra.Pedidos.Exists(p=> p.Producto.Id == id))
                 {
@@ -76,10 +76,10 @@ namespace SuperMercado
                     factura.Compra.Pedidos.Add(pedido);
                 }
 
-                producto.Stock -= cantidadComprar;
+                productoAdmin.RestarStock(cantidadComprar, id);
 
                 actualizarCarrito();
-                actualizarStock();
+                actualizarStock(productoAdmin.GetProductosTemporal());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -135,10 +135,11 @@ namespace SuperMercado
                 {
                     pedidoAdmin.Create(p, factura.Id).ToString();
                 }
-                foreach (BE.Producto p in productos)
+                foreach (BE.Producto p in productoAdmin.GetProductosTemporal())
                 {
                     productoAdmin.Update(p);
                 }
+                MessageBox.Show("Compra realizada con exito");
                 this.Close();
             }
         }
