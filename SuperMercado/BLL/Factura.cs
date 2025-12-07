@@ -25,9 +25,9 @@ namespace BLL
         {
             return new DAL.MapperFactura().GetLast();
         }
-        public void GenerarXml()
+        public void GenerarXml(string ruta, int dni)
         {
-            new DAL.MapperFactura().GenerarXml();
+            new DAL.MapperFactura().GenerarXml(ruta, dni);
         }
     }
 }

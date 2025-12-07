@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,11 +29,22 @@ namespace SuperMercado
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GenerarXML();
+            using (FolderBrowserDialog dialog = new FolderBrowserDialog())
+            {
+                dialog.Description = "Seleccioná una carpeta para guardar el archivo";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string rutaCarpeta = dialog.SelectedPath;
+                    string rutaFinal = Path.Combine(rutaCarpeta, _usuario.Nombre + _usuario.Apellido + "Facturas.xml");
+
+                    GenerarXML(rutaFinal);
+                }
+            }
         }
-        private void GenerarXML()
+        private void GenerarXML(string ruta)
         {
-            new BLL.Factura().GenerarXml();
+            new BLL.Factura().GenerarXml(ruta, _usuario.Dni);
             MessageBox.Show("XML generado");
         }
 
