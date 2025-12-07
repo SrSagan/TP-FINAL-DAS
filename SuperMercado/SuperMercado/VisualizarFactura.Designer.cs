@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,12 +47,6 @@
             this.txtApellido = new System.Windows.Forms.Label();
             this.txtMail = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +68,42 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.Size = new System.Drawing.Size(454, 410);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // prod
+            // 
+            this.prod.HeaderText = "Producto";
+            this.prod.Name = "prod";
+            this.prod.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // ValUnitario
+            // 
+            this.ValUnitario.HeaderText = "ValorUnitario";
+            this.ValUnitario.Name = "ValUnitario";
+            this.ValUnitario.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Producto
+            // 
+            this.Producto.HeaderText = "p";
+            this.Producto.Name = "Producto";
+            this.Producto.Visible = false;
             // 
             // button1
             // 
@@ -188,42 +224,6 @@
             this.txtTotal.Size = new System.Drawing.Size(65, 20);
             this.txtTotal.TabIndex = 14;
             this.txtTotal.Text = "Numero";
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
-            // prod
-            // 
-            this.prod.HeaderText = "Producto";
-            this.prod.Name = "prod";
-            this.prod.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // ValUnitario
-            // 
-            this.ValUnitario.HeaderText = "ValorUnitario";
-            this.ValUnitario.Name = "ValUnitario";
-            this.ValUnitario.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "p";
-            this.Producto.Name = "Producto";
-            this.Producto.Visible = false;
             // 
             // VisualizarFactura
             // 

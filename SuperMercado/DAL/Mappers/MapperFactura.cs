@@ -102,8 +102,7 @@ namespace DAL
 
             return factura;
         }
-
-        public void GenerarXml()
+        public void GenerarXml(string ruta, int dni)
         {
             List<Factura> facturas = GetAll();
             DataSet ds = new DataSet("FacturasDataSet");
@@ -123,30 +122,45 @@ namespace DAL
 
             foreach (var fac in facturas)
             {
-                DataRow rowF = dtFactura.NewRow();
-                rowF["Id"] = fac.Id;
-                rowF["UsuarioNombre"] = fac.Cliente.Nombre + " " + fac.Cliente.Apellido;
-                rowF["Mail"] = fac.Cliente.Mail;
-                rowF["DNI"] = (int)fac.Cliente.Dni;
-                rowF["PrecioTotal"] = fac.PrecioTotal;
-                dtFactura.Rows.Add(rowF);
-                List<BE.Pedido> pedidos = new DAL.Mappers.MapperPedido().GetByFacId(fac.Id);
-
-                foreach (var pedido in pedidos)
+                if(fac.Cliente.Dni == dni)
                 {
-                    DataRow rowP = dtPedidos.NewRow();
-                    rowP["FacturaId"] = fac.Id;
-                    rowP["ProductoNombre"] = pedido.Producto.Nombre;
-                    rowP["Cantidad"] = pedido.Cantidad;
-                    rowP["Precio"] = pedido.Precio;
-                    dtPedidos.Rows.Add(rowP);
+                    DataRow rowF = dtFactura.NewRow();
+                    rowF["Id"] = fac.Id;
+                    rowF["UsuarioNombre"] = fac.Cliente.Nombre + " " + fac.Cliente.Apellido;
+                    rowF["Mail"] = fac.Cliente.Mail;
+                    rowF["DNI"] = (int)fac.Cliente.Dni;
+                    rowF["PrecioTotal"] = fac.PrecioTotal;
+                    dtFactura.Rows.Add(rowF);
+
+                    List<BE.Pedido> pedidos = new DAL.Mappers.MapperPedido().GetByFacId(fac.Id);
+
+                    foreach (var pedido in pedidos)
+                    {
+                        DataRow rowP = dtPedidos.NewRow();
+                        rowP["FacturaId"] = fac.Id;
+                        rowP["ProductoNombre"] = pedido.Producto.Nombre;
+                        rowP["Cantidad"] = pedido.Cantidad;
+                        rowP["Precio"] = pedido.Precio;
+                        dtPedidos.Rows.Add(rowP);
+                    }
                 }
             }
 
             ds.Tables.Add(dtFactura);
             ds.Tables.Add(dtPedidos);
 
-            ds.WriteXml("C:\\test\\Facturas.xml"); 
+            DataRelation rel = new DataRelation(
+                "Factura_Pedidos",
+                dtFactura.Columns["Id"],
+                dtPedidos.Columns["FacturaId"]
+            );
+
+            ds.Relations.Add(rel);
+
+            rel.Nested = true;
+
+            ds.WriteXml(ruta);
         }
+
     }
 }
