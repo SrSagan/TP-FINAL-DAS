@@ -25,7 +25,7 @@ namespace SuperMercado
         {
             if(_usuario.Familia == 1)
             {
-                comprarToolStripMenuItem.Visible = false;
+                //comprarToolStripMenuItem.Visible = false;
             }
             else if(_usuario.Familia == 0)
             {
